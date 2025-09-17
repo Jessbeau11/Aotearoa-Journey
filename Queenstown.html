@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queenstown</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="custom-style.css">
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-navigation" id="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Aotearoa Journey</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <!-- Mobile menu toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Scroll progress indicator -->
+        <div class="scroll-progress"></div>
+    </nav>
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queenstown</title>
+    <style>
+/* ===== CSS CUSTOM PROPERTIES (VARIABLES) ===== */
+:root {
+    --primary-blue: #2c5f7a;
+    --light-blue: #4a90b8;
+    --accent-blue: #1a4d63;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --dark-gray: #333333;
+    --overlay-dark: rgba(0, 0, 0, 0.5);
+    --font-serif: 'Georgia', serif;
+    --font-sans: 'Arial', sans-serif;
+}
+
+/* ===== RESET AND BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--dark-gray);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(44, 95, 122, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* BLUE BORDER ANIMATION ON CLICK/HOVER */
+.nav-link:hover,
+.nav-link:active {
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    animation: borderPulse 0.6s ease-in-out;
+}
+
+@keyframes borderPulse {
+    0% { border-color: transparent; transform: scale(1); }
+    50% { border-color: var(--light-blue); transform: scale(1.05); }
+    100% { border-color: var(--primary-blue); transform: scale(1); }
+}
+
+/* ===== HERO SECTION WITH PARALLAX ===== */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%234a90b8" width="1200" height="800"/><polygon fill="%232c5f7a" points="0,800 300,600 600,700 900,500 1200,600 1200,800"/><polygon fill="%231a4d63" points="0,800 400,650 800,750 1200,650 1200,800"/><circle fill="%23ffffff" cx="200" cy="200" r="50" opacity="0.8"/><circle fill="%23ffffff" cx="800" cy="150" r="30" opacity="0.6"/><circle fill="%23ffffff" cy="300" cx="1000" r="40" opacity="0.7"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* PARALLAX EFFECT */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    animation: fadeInUp 1.2s ease-out;
+    color: var(--white);
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin-bottom: 1rem;
+    color: var(--light-blue);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* ===== CONTENT CARDS ===== */
+.content-cards {
+    padding: 100px 0;
+    background: var(--light-gray);
+    animation: fadeIn 1s ease-in 0.5s both;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    min-height: 300px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Background Images */
+.food-card {
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+}
+
+.attractions-card {
+    background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
+}
+
+.transport-card {
+    background: linear-gradient(135deg, var(--light-blue), var(--accent-blue));
+}
+
+.card-content {
+    padding: 40px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--white);
+}
+
+.card-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.card-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* BUTTON ANIMATIONS */
+.card-button {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    letter-spacing: 1px;
+}
+
+.card-button:hover,
+.card-button:active {
+    background: var(--white);
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    animation: buttonBlueFlash 0.6s ease-in-out;
+    transform: scale(1.05);
+}
+
+@keyframes buttonBlueFlash {
+    0% { border-color: var(--white); background: transparent; }
+    50% { border-color: var(--light-blue); background: rgba(255, 255, 255, 0.5); }
+    100% { border-color: var(--primary-blue); background: var(--white); }
+}
+
+/* ===== TSS EARNSLAW SECTION ===== */
+.earnslaw-section {
+    padding: 100px 0;
+    background: var(--white);
+    animation: fadeInUp 1s ease-out;
+}
+
+.earnslaw-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.earnslaw-text h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.earnslaw-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-gray);
+}
+
+.earnslaw-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.image-placeholder {
+    height: 200px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--light-blue), var(--primary-blue));
+    transition: transform 0.3s ease;
+}
+
+.image-placeholder:hover {
+    transform: scale(1.05);
+}
+
+/* ===== WELCOME SECTION ===== */
+.welcome-section {
+    padding: 100px 0;
+    background: var(--light-gray);
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+.welcome-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== LOCATION GRID ===== */
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.location-card {
+    height: 250px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.location-card:nth-child(even) { animation-delay: 0.2s; }
+
+.location-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Location Background Colors */
+.te-anau { background: linear-gradient(135deg, #2c5f7a, #4a90b8); }
+.auckland { background: linear-gradient(135deg, #4a90b8, #6bb6d9); }
+.tekapo { background: linear-gradient(135deg, #1a4d63, #2c5f7a); }
+.dunedin { background: linear-gradient(135deg, #6bb6d9, #4a90b8); }
+.wellington { background: linear-gradient(135deg, #2c5f7a, #1a4d63); }
+.queenstown { background: linear-gradient(135deg, #4a90b8, #2c5f7a); }
+
+.location-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: var(--white);
+    padding: 40px 30px 30px;
+    transform: translateY(50px);
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover .location-overlay {
+    transform: translateY(0);
+}
+
+.location-overlay h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.location-button {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.location-button:hover,
+.location-button:active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    animation: buttonBlueFlash 0.6s ease-in-out;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-links:last-child,
+.footer-social:last-child {
+    margin-bottom: 0;
+}
+
+.footer a {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.footer a:hover {
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: var(--white);
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .earnslaw-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links,
+    .footer-social {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 2.5rem;
+    }
+
+    .card-grid {
+        gap: 20px;
+    }
+    
+    .content-cards {
+        padding: 60px 0;
+    }
+    
+    .welcome-section,
+    .earnslaw-section {
+        padding: 60px 0;
+    }
+}
+
+/* ===== SCROLL TRIGGERED ANIMATIONS ===== */
+@media (prefers-reduced-motion: no-preference) {
+    .card,
+    .location-card,
+    .earnslaw-section,
+    .welcome-section {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Stagger animations for better effect */
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.5s; }
+    
+    .location-card:nth-child(1) { animation-delay: 0.1s; }
+    .location-card:nth-child(2) { animation-delay: 0.2s; }
+    .location-card:nth-child(3) { animation-delay: 0.3s; }
+    .location-card:nth-child(4) { animation-delay: 0.4s; }
+    .location-card:nth-child(5) { animation-delay: 0.5s; }
+    .location-card:nth-child(6) { animation-delay: 0.6s; }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">QUEENSTOWN</div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="food-and-drink.html" class="nav-link">food-drink</a>
+                </li>
+                <li class="nav-item">
+                    <a href="transportation.html" class="nav-link">Transportation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="attractions.html" class="nav-link">Attractions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">IT'S TIME TO VISIT</h1>
+            <h2 class="hero-subtitle">QUEENSTOWN</h2>
+            <p class="hero-description">Experience the heart of New Zealand</p>
+        </div>
+    </section>
+
+    <!-- Main Content Cards -->
+    <section class="content-cards">
+        <div class="container">
+            <div class="card-grid">
+                <div class="card food-card">
+                    <div class="card-content">
+                        <h3>FOOD & DRINK</h3>
+                        <p>Discover amazing local cuisine and world-class wines in the heart of Central Otago.</p>
+                        <button class="card-button">CLICK FOR MORE</button>
+                    </div>
+                </div>
+                
+                <div class="card attractions-card">
+                    <div class="card-content">
+                        <h3>ATTRACTIONS</h3>
+                        <p>From bungy jumping to scenic gondola rides, experience thrilling adventures.</p>
+                        <button class="card-button">CLICK FOR MORE</button>
+                    </div>
+                </div>
+                
+                <div class="card transport-card">
+                    <div class="card-content">
+                        <h3>TRANSPORTATION</h3>
+                        <p>Navigate Queenstown easily with our comprehensive transport guide.</p>
+                        <button class="card-button">CLICK FOR MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TSS Earnslaw Section -->
+    <section class="earnslaw-section">
+        <div class="container">
+            <div class="earnslaw-content">
+                <div class="earnslaw-text">
+                    <h2>TSS EARNSLAW</h2>
+                    <p>If you want to take a trip on one of the last steam powered ships then now is your chance. In Queenstown they have a boat called the <strong>EARNSLAW</strong>. This boat was built in 1911 and has been going ever since. However the people of Queenstown have decided that they needed to remove one of the key features of the boat (coal-power) because it was bad for the environment. The boat is still up and running and I try to go on the boat every time I'm in the town. Once on the boat it will take you on a scenic 90 minute lake cruises across Lake Wakatipu to Walter Peak High Country Farm and back. You can chose to take the boat to the island and have high tea in an historial builds and feed the farm animals or take the boat back to the main land.</p>
+                </div>
+                <div class="earnslaw-images">
+                    <div class="image-placeholder earnslaw-img1"></div>
+                    <div class="image-placeholder earnslaw-img2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="container">
+            <h2 class="welcome-title">Welcome to Our New Zealand Travel Blog</h2>
+            <p class="welcome-text">Explore the most beautiful destinations across New Zealand</p>
+            
+            
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Cookie Policy</a>
+                <a href="#">Legal Terms</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="#">Connect</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
