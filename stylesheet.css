@@ -541,6 +541,7 @@ body {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-small);
+    cursor: pointer;
     transition: all var(--transition-medium);
     /* Animation initial state for staggered effect */
     opacity: 0;
