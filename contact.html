@@ -64,12 +64,20 @@
                         <p><strong>Location:</strong> Auckland, New Zealand</p>
                     </div>
                 </div>
-                <form class="contact-form animate-slide-up">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Tell me about your New Zealand travel dreams..." required></textarea>
-                    <button type="submit" class="submit-button click-animation">Send Message</button>
-                </form>
+                <form name="contact" method="POST" data-netlify="true">
+                    <p>
+                      <label>Name: <input type="text" name="name" /></label>
+                    </p>
+                    <p>
+                      <label>Email: <input type="email" name="email" /></label>
+                    </p>
+                    <p>
+                      <label>Message: <textarea name="message"></textarea></label>
+                    </p>
+                    <p>
+                      <button type="submit">Send</button>
+                    </p>
+                  </form>
             </div>
         </div>
     </section>
