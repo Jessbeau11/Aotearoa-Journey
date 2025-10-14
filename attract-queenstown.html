@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queenstown Attractions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2rem;
+            z-index: 100;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 50vh;
+            background-image: url('https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: #f5f0eb;
+            padding: 3rem 2rem;
+        }
+
+        .gallery-item {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .gallery-item.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery-item.reverse .gallery-text {
+            order: 1;
+        }
+
+        .gallery-item.reverse .gallery-image-container {
+            order: 2;
+        }
+
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-image.active {
+            opacity: 1;
+        }
+
+        .gallery-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: white;
+        }
+
+        .gallery-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .gallery-arrow {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-arrow:hover {
+            background: white;
+        }
+
+        .gallery-text {
+            padding: 2rem;
+        }
+
+        .gallery-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #c4595f;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .scroll-text {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            text-align: center;
+            padding: 3rem 0;
+            background: #f5f0eb;
+        }
+
+        .back-to-top a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: 0.2em;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-top a:hover {
+            color: #c4595f;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f5f0eb;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #c4595f;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #c4595f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .gallery-item,
+            .gallery-item.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.reverse .gallery-text,
+            .gallery-item.reverse .gallery-image-container {
+                order: unset;
+            }
+
+            .gallery-image-container {
+                height: 350px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .top-nav a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="#attractions">Attractions</a>
+        <a href="#food">Food & Drinks</a>
+        <a href="#transport">Transportation</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>QUEENSTOWN</h1>
+            <h2>ATTRACTIONS</h2>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <!-- First Gallery Item -->
+        <div class="gallery-item">
+            <div class="gallery-image-container">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Earnslaw Boat" class="gallery-image active">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800" alt="Lake Wakatipu" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800" alt="Mountain View" class="gallery-image">
+                
+                <div class="gallery-arrows">
+                    <button class="gallery-arrow" onclick="changeImage(0, -1)">‹</button>
+                    <button class="gallery-arrow" onclick="changeImage(0, 1)">›</button>
+                </div>
+                
+                <div class="gallery-controls">
+                    <span class="gallery-dot active" onclick="setImage(0, 0)"></span>
+                    <span class="gallery-dot" onclick="setImage(0, 1)"></span>
+                    <span class="gallery-dot" onclick="setImage(0, 2)"></span>
+                </div>
+            </div>
+            
+            <div class="gallery-text">
+                <p>If you want to take a trip on one of the last steam powered ships then now is your chance. In Queenstown they have a boat called the <span class="highlight">EARNSLAW</span>.</p>
+                <p>This boat was built in 1911 and has been going ever since. However the people of Queenstown have decided that they needed to remove one of the key features of the boat (coal-power) because it was bad for the environment. The boat is still up and running and I try to go on the boat every time im in the town. Once on the boat it will take you on a on scenic 90-minute lake cruises across Lake Wakatipu to Walter Peak High Country Farm and back.</p>
+                <p>You can chose to take the boat to the island and have high tea in an historial builds and feed the farm animals or take the boat back to the main land.</p>
+            </div>
+        </div>
+
+        <div class="scroll-text">
+            <p>• • •<br>scroll for more</p>
+        </div>
+
+        <!-- Second Gallery Item (Reversed) -->
+        <div class="gallery-item reverse">
+            <div class="gallery-text">
+                <p>If you want to take a trip on one of the last steam powered ships then now is your chance. In Queenstown they have a boat called the .</p>
+                <p>This boat was built in 1911 and has been going ever since. However the people of Queenstown have decided that they needed to remove one of the key features of the boat (coal-power) because it was bad for the environment. The boat is still up and running and I try to go on the boat every time im in the town. Once on the boat it will take you on a on scenic 90-minute lake cruises across Lake Wakatipu to Walter Peak High Country Farm and back.</p>
+                <p>You can chose to take the boat to the island and have high tea in an historial builds and feed the farm animals or take the boat back to the main land.</p>
+            </div>
+            
+            <div class="gallery-image-container">
+                <img src="https://images.unsplash.com/photo-1605126444565-d88f5ee525b8?w=800" alt="Queenstown Harbor" class="gallery-image active">
+                <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?w=800" alt="Mountain Lake" class="gallery-image">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Scenic View" class="gallery-image">
+                
+                <div class="gallery-arrows">
+                    <button class="gallery-arrow" onclick="changeImage(1, -1)">‹</button>
+                    <button class="gallery-arrow" onclick="changeImage(1, 1)">›</button>
+                </div>
+                
+                <div class="gallery-controls">
+                    <span class="gallery-dot active" onclick="setImage(1, 0)"></span>
+                    <span class="gallery-dot" onclick="setImage(1, 1)"></span>
+                    <span class="gallery-dot" onclick="setImage(1, 2)"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-text">
+            <p>• • •<br>scroll for more</p>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <div class="back-to-top">
+        <a href="#top">BACK TO TOP ↑</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">cookie policy</a>
+            <a href="#">Legal Terms</a>
+            <a href="#">Privacy policy</a>
+        </div>
+        <div class="social-links">
+            <span>Connect:</span>
+            <a href="#">Instagram</a>
+            <a href="#">X</a>
+            <a href="#">Youtube</a>
+        </div>
+    </footer>
+
+    <script>
+        let currentImages = [0, 0];
+
+        function changeImage(galleryIndex, direction) {
+            const gallery = document.querySelectorAll('.gallery-image-container')[galleryIndex];
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            
+            images[currentImages[galleryIndex]].classList.remove('active');
+            dots[currentImages[galleryIndex]].classList.remove('active');
+            
+            currentImages[galleryIndex] += direction;
+            
+            if (currentImages[galleryIndex] < 0) {
+                currentImages[galleryIndex] = images.length - 1;
+            } else if (currentImages[galleryIndex] >= images.length) {
+                currentImages[galleryIndex] = 0;
+            }
+            
+            images[currentImages[galleryIndex]].classList.add('active');
+            dots[currentImages[galleryIndex]].classList.add('active');
+        }
+
+        function setImage(galleryIndex, imageIndex) {
+            const gallery = document.querySelectorAll('.gallery-image-container')[galleryIndex];
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            
+            images[currentImages[galleryIndex]].classList.remove('active');
+            dots[currentImages[galleryIndex]].classList.remove('active');
+            
+            currentImages[galleryIndex] = imageIndex;
+            
+            images[currentImages[galleryIndex]].classList.add('active');
+            dots[currentImages[galleryIndex]].classList.add('active');
+        }
+    </script>
+</body>
+</html>

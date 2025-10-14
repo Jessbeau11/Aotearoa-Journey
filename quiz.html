@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Zealand Travel Blog - Discover Aotearoa</title>
+    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="stylesheet.css">
+   
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-navigation" id="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Aotearoa Journey</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="attractions.html" class="nav-link">Attractions</a></li>
+                <li><a href="about-me.html" class="nav-link">about me</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+
+            </ul>
+            <!-- Mobile menu toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Scroll progress indicator -->
+        <div class="scroll-progress"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- <section class="hero-section" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Aotearoa Journey</h1>
+            <div class="hero-subtitle-container">
+            </div>
+        </div> -->
+        <!-- Scroll indicator -->
+        <!-- <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section> -->
+
+    <!-- Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="quiz-container">
+            <h2>Where Should I Go?</h2>
+            <p class="subtitle">Discover your perfect New Zealand destination</p>
+            
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div id="quiz">
+                <div class="question-container active" data-question="1">
+                    <div class="question">What's your ideal vacation vibe?</div>
+                    <div class="options">
+                        <div class="option" data-destination="queenstown">Adventure and adrenaline</div>
+                        <div class="option" data-destination="dunedin">Culture and history</div>
+                        <div class="option" data-destination="wellington">Urban exploration and arts</div>
+                        <div class="option" data-destination="te-anau">Peaceful nature retreat</div>
+                        <div class="option" data-destination="tekapo">Stargazing and serenity</div>
+                        <div class="option" data-destination="auckland">City life with coastal charm</div>
+                    </div>
+                </div>
+
+                <div class="question-container" data-question="2">
+                    <div class="question">What's your preferred activity?</div>
+                    <div class="options">
+                        <div class="option" data-destination="queenstown">Bungee jumping or skiing</div>
+                        <div class="option" data-destination="dunedin">Visiting museums and galleries</div>
+                        <div class="option" data-destination="wellington">Café hopping and theatre</div>
+                        <div class="option" data-destination="te-anau">Hiking and wildlife watching</div>
+                        <div class="option" data-destination="tekapo">Photography and relaxation</div>
+                        <div class="option" data-destination="auckland">Shopping and waterfront dining</div>
+                    </div>
+                </div>
+
+                <div class="question-container" data-question="3">
+                    <div class="question">What kind of scenery appeals to you most?</div>
+                    <div class="options">
+                        <div class="option" data-destination="queenstown">Dramatic mountains and lakes</div>
+                        <div class="option" data-destination="dunedin">Historic architecture and coastline</div>
+                        <div class="option" data-destination="wellington">Harbor views and rolling hills</div>
+                        <div class="option" data-destination="te-anau">Pristine wilderness and fjords</div>
+                        <div class="option" data-destination="tekapo">Turquoise lakes and night skies</div>
+                        <div class="option" data-destination="auckland">Beaches and city skyline</div>
+                    </div>
+                </div>
+
+                <div class="question-container" data-question="4">
+                    <div class="question">What's your ideal pace of travel?</div>
+                    <div class="options">
+                        <div class="option" data-destination="queenstown">Fast-paced and thrilling</div>
+                        <div class="option" data-destination="dunedin">Leisurely and thoughtful</div>
+                        <div class="option" data-destination="wellington">Energetic but cultural</div>
+                        <div class="option" data-destination="te-anau">Slow and immersive in nature</div>
+                        <div class="option" data-destination="tekapo">Peaceful and contemplative</div>
+                        <div class="option" data-destination="auckland">Dynamic with variety</div>
+                    </div>
+                </div>
+
+                <div class="question-container" data-question="5">
+                    <div class="question">What's most important for your trip?</div>
+                    <div class="options">
+                        <div class="option" data-destination="queenstown">Unforgettable experiences</div>
+                        <div class="option" data-destination="dunedin">Learning and discovery</div>
+                        <div class="option" data-destination="wellington">Food and entertainment</div>
+                        <div class="option" data-destination="te-anau">Connecting with nature</div>
+                        <div class="option" data-destination="tekapo">Finding tranquility</div>
+                        <div class="option" data-destination="auckland">Convenience and diversity</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result" id="result">
+                <div class="destination-icon" id="destinationIcon"></div>
+                <h3 id="destinationName"></h3>
+                <p class="result-description" id="destinationDescription"></p>
+                <button class="restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 NZ Explorer. Discover the beauty of Aotearoa New Zealand.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Quiz functionality
+        const destinations = {
+            queenstown: {
+                name: "Queenstown",
+                icon: "🏔️",
+                description: "The adventure capital of New Zealand! Get ready for bungee jumping, jet boating, skiing, and stunning mountain scenery. Queenstown offers world-class thrills alongside beautiful Lake Wakatipu."
+            },
+            dunedin: {
+                name: "Dunedin",
+                icon: "🏛️",
+                description: "A charming city rich in Scottish heritage and Victorian architecture. Explore historic buildings, visit the Royal Albatross Centre, and enjoy the vibrant student culture and unique wildlife on the Otago Peninsula."
+            },
+            wellington: {
+                name: "Wellington",
+                icon: "🎭",
+                description: "New Zealand's creative capital! Experience world-class museums, a thriving arts scene, incredible coffee culture, and waterfront dining. This compact city is perfect for culture lovers and foodies."
+            },
+            'te-anau': {
+                name: "Te Anau",
+                icon: "🌲",
+                description: "The gateway to Fiordland National Park and Milford Sound. This peaceful lakeside town is perfect for nature lovers seeking pristine wilderness, glowworm caves, and some of the world's best hiking trails."
+            },
+            tekapo: {
+                name: "Lake Tekapo",
+                icon: "⭐",
+                description: "Home to stunning turquoise waters and some of the clearest night skies on Earth. Visit the Church of the Good Shepherd, soak in hot pools, and experience world-class stargazing in this serene alpine village."
+            },
+            auckland: {
+                name: "Auckland",
+                icon: "🌆",
+                description: "New Zealand's largest city offers the perfect blend of urban sophistication and natural beauty. Enjoy diverse dining, shopping, beautiful harbors, nearby beaches, and easy access to island getaways."
+            }
+        };
+
+        let currentQuestion = 1;
+        let scores = {
+            queenstown: 0,
+            dunedin: 0,
+            wellington: 0,
+            'te-anau': 0,
+            tekapo: 0,
+            auckland: 0
+        };
+
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const destination = this.getAttribute('data-destination');
+                scores[destination]++;
+                nextQuestion();
+            });
+        });
+
+        function nextQuestion() {
+            const current = document.querySelector('.question-container.active');
+            current.classList.remove('active');
+
+            currentQuestion++;
+            const totalQuestions = 5;
+            const progress = (currentQuestion - 1) / totalQuestions * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            if (currentQuestion <= totalQuestions) {
+                const next = document.querySelector(`[data-question="${currentQuestion}"]`);
+                next.classList.add('active');
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz').style.display = 'none';
+            
+            let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            
+            const result = destinations[winner];
+            document.getElementById('destinationIcon').textContent = result.icon;
+            document.getElementById('destinationName').textContent = result.name;
+            document.getElementById('destinationDescription').textContent = result.description;
+            document.getElementById('result').classList.add('active');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 1;
+            scores = {
+                queenstown: 0,
+                dunedin: 0,
+                wellington: 0,
+                'te-anau': 0,
+                tekapo: 0,
+                auckland: 0
+            };
+            
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('result').classList.remove('active');
+            document.getElementById('quiz').style.display = 'block';
+            
+            document.querySelectorAll('.question-container').forEach(q => {
+                q.classList.remove('active');
+            });
+            document.querySelector('[data-question="1"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>

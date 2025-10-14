@@ -271,7 +271,11 @@ body {
 }
 
 .Queenstown-page-background {
-    background: url('img/dun_attractions.JPG') center/cover;
+    background: url('img/duck_att_queen.jpeg') center/cover;
+}
+
+.auckland-page-background {
+    background: url('img/auck_att_cover.jpeg') center/cover;
 }
 
 .hero-overlay {
@@ -474,6 +478,7 @@ body {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--container-padding);
+    height: 100%;
 }
 
 .welcome-image {
@@ -481,11 +486,12 @@ body {
     border-radius: var(--border-radius-large);
     overflow: hidden;
     box-shadow: var(--shadow-large);
+    height: 700px;
 }
 
 .welcome-image img {
     width: 100%;
-    height: 500px;
+    height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
 }
