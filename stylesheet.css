@@ -270,12 +270,31 @@ body {
     background: url('img/Auckland_beach.png') center/cover;
 }
 
-.Queenstown-page-background {
+.queenstown-page-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url('img/duck_att_queen.jpeg') center/cover;
 }
 
-.auckland-page-background {
+.auckland-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url('img/auck_att_cover.jpeg') center/cover;
+}
+
+.te-anau-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/ta\ anau-cover2.jpeg') center/cover;
 }
 
 .hero-overlay {
@@ -551,7 +570,7 @@ body {
     margin-bottom: var(--spacing-xxxl);
 }
 
-.blog-card {
+a.blog-card {
     background: var(--color-white);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -561,6 +580,7 @@ body {
     /* Animation initial state for staggered effect */
     opacity: 0;
     transform: translateY(30px);
+    text-decoration: none;
 }
 
 .blog-card:hover {
